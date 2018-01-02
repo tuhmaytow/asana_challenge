@@ -7,8 +7,20 @@
 //     }
 // }
 
-$(document).ready(function(){
-    $("button").click(function(){
-        $(".card").toggle();
-    });
+// $(document).ready(function(){
+//     $("button").click(function(){
+//         $(".card").toggle();
+//     });
+// });
+
+$(".button").click(function(){
+    $.ajax({
+      url: "https://app.asana.com/api/1.0/tasks/509406739863201",
+      method: "GET",
+      Authorization: {
+        Bearer: "0/0c60e78596a717c771c04c1c35b0a451"
+      },
+      success: function(result){
+        $(".card").html(result);
+    }});
 });
