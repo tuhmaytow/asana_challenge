@@ -13,17 +13,16 @@ $(document).ready(function(){
   });
 
   var showTaskList = function(taskList) {
-    var i = 0;
-    for(i = 0; i < taskList.length; i++) {
+    for(var i = 0; i < taskList.length; i++) {
       showTask(taskList[i]);
     }
   };
 
   var showTask = function(taskData){
     var taskList = $(".task-list");
-
     var card = $('<div></div>').addClass('card');
     var taskName = $('<div></div>').addClass('taskname');
+
     taskName.html(taskData.name);
     card.append(taskName);
     taskList.append(card);
