@@ -1,4 +1,4 @@
-$(".button").click(function(){
+$(document).ready(function(){
   $.ajax({
     method: "GET",
     url: "https://app.asana.com/api/1.0/projects/507623085822462/tasks",
@@ -7,15 +7,14 @@ $(".button").click(function(){
     },
     success: function(result) {
       $(".card").find(".taskname").html(result.data.name);
-      showTaskList( result.data);
-      console.log(result);
+      showTaskList(result.data);
       }
     });
   });
 
   var showTaskList = function(taskList) {
     var i = 0;
-    for( i = 0; i < taskList.length; i++) {
+    for(i = 0; i < taskList.length; i++) {
       showTask(taskList[i]);
     }
   };
