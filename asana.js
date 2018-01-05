@@ -1,29 +1,31 @@
-// function myFunction() {
-//     var x = document.getElementById("buttondiv");
-//     if (x.style.display === "none") {
-//         x.style.display = "block";
-//     } else {
-//         x.style.display = "none";
-//     }
-// }
-
-// $(document).ready(function(){
-//     $("button").click(function(){
-//         $(".card").toggle();
-//     });
-// });
-
-// var projectId = getUrlParameter("project");
-
 $(".button").click(function(){
-    $.ajax({
-      url: "https://app.asana.com/api/1.0/tasks/509406739863203",
-      method: "GET",
-      headers: {
-        "Authorization": "Bearer 0/0c60e78596a717c771c04c1c35b0a451"
-      },
-      success: function(result){
-        $(".card").html(result);
-        console.log(result);
-    }});
-});
+  $.ajax({
+    method: "GET",
+    url: "https://app.asana.com/api/1.0/projects/507623085822462/tasks",
+    headers: {
+      "Authorization": "Bearer 0/0c60e78596a717c771c04c1c35b0a451"
+    },
+    success: function(result) {
+      $(".card").find(".taskname").html(result.data.name);
+      showTaskList( result.data);
+      console.log(result);
+      }
+    });
+  });
+
+  var showTaskList = function(taskList) {
+    var i = 0;
+    for( i = 0; i < taskList.length; i++) {
+      showTask(taskList[i]);
+    }
+  };
+
+  var showTask = function(taskData){
+    var taskList = $(".task-list");
+
+    var card = $('<div></div>').addClass('card');
+    var taskName = $('<div></div>').addClass('taskname');
+    taskName.html(taskData.name);
+    card.append(taskName);
+    taskList.append(card);
+  };
