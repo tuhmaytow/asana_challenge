@@ -34,8 +34,17 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
 }
 
+.task-list: {
+  width: 90%;
+}
+
 .taskname {
   font-family: 'Open Sans', sans-serif;
+  float: left;
+}
+
+.taskname:hover {
+  cursor: pointer;
 }
 
 .button{
